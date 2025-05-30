@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Рецепти за 2023 рік</h1>
+  <ul>
+    {% for recipe in recipes %}
+      <li>
+        <a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title }}</a>
+        - {{ recipe.created_at|date:"Y-m-d" }}
+      </li>
+    {% empty %}
+      <li>Не знайдено рецептів за 2023 рік.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
